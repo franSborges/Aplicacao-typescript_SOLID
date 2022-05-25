@@ -1,4 +1,4 @@
-import { IcategoriesRepository, ICreateCategoryDTO } from "../repositories/ICategoriesRepository";
+import { IcategoriesRepository, ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
   name: string;
