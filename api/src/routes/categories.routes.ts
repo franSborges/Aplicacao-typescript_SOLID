@@ -4,14 +4,10 @@ import { listCategoriesController } from "../modules/cars/useCases/listCategorie
 
 const categoriesRoutes = Router();
 
-categoriesRoutes.post("/",  (req, res) => {
-  return createCategoryController.handle(req, res);
-});
+categoriesRoutes.post("/",  (req, res) => createCategoryController.handle(req, res));
 
 
-categoriesRoutes.get("/", (req, res) => {
-  return listCategoriesController.handle(req, res);
-});
+categoriesRoutes.get("/", (req, res) => listCategoriesController.handle(req, res));
 
 
 export { categoriesRoutes };
