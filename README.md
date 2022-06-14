@@ -1,11 +1,12 @@
 # Car Management Application
 
+This application is aimed at consolidating my knowledge in concepts for code architecture such as SOLID, and in languages such as Typescript, I was also able to implement features such as reading .csv files using the Node.js stream concept that allows a file to be read by parts improving data processing.
 
-Essa aplicação e voltada para consolidar meus conhecimentos em conceitos para arquitetura de código como SOLID, e em linguagens como Typescript, também pude implimentar features como a leitura de arquivos .csv utilizando o conceito de stream do Node.js que permite que um arquivo seja lido por partes melhorando o processamento de dados.
+technologies:
+typescript
+node.js
+express.js
 
-tecnologias:
-Typescript
-Node.js
-Express.js
+coming soon with documentation!!!!
+----------------------------------
 
-em breve com documentação!!!!
