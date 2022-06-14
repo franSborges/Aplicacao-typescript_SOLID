@@ -1,22 +1,63 @@
 import { parse } from "csv-parse";
 import fs from "fs";
+import { IcategoriesRepository } from "../../repositories/ICategoriesRepository";
 
+
+interface IImportCategory {
+  name: String;
+  description: String;
+}
 
 class ImportCategoryUseCase {
+  constructor(private categoriesRepository: IcategoriesRepository) {}
+  
+  loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
+    return new Promise((resolve, reject) => {
+      const stream = fs.createReadStream(file.path);
 
-  execute(file: Express.Multer.File) {
-    
-    const stream = fs.createReadStream(file.path);
+      const categories: IImportCategory[] = [];
 
-    const parseFile = parse();
+      const parseFile = parse();
 
-    stream.pipe(parseFile);
+      stream.pipe(parseFile);
 
-    parseFile.on("data", async (line) => {
-      console.log(line);
+      parseFile.on("data", async (line) => {
+        const [name, description] = line;
+
+        categories.push({
+          name,
+          description
+        });
+      }).on("end", () => {
+        resolve(categories)
+      }).on("error", (err) => {
+        reject(err)
+      });
     });
+  }
+
+ async execute(file: Express.Multer.File): Promise<void> {
+    const categories = await this.loadCategories(file)
+    console.log(categories);
+    
+   categories.map(async (category => {
+     const { name, description } = category;
+     
+     const existCategory = this.categoriesRepository.findByName(name);
+
+     if (!existCategory) {
+       this.categoriesRepository.create({
+         name,
+         description
+       })
+     }
+   }));
   }
 }
 
 
 export { ImportCategoryUseCase }
+
+function async(arg0: (category: any) => void): (value: IImportCategory, index: number, array: IImportCategory[]) => unknown {
+  throw new Error("Function not implemented.");
+}
