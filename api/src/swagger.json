@@ -9,11 +9,11 @@
     }
   },
   "paths": {
-    "/signup": {
+    "/categories": {
       "post": {
-        "tags": ["User"],
-        "sumary": "Create user account",
-         "description": "Create a new user account",
+        "tags": ["Categories"],
+        "sumary": "Create a category",
+         "description": "Create a new category",
          "requestBody": {
            "content": {
              "application/json": {
@@ -28,9 +28,9 @@
                    }
                  },
                  "example": {
-                   "name": "Name User",
-                   "email": "E-mail User",
-                   "password": "Valid password"
+                   "name": "category name sample",
+                   "description": "category description sample"
+                
                  }
                }
              }
@@ -38,90 +38,13 @@
          },
          "responses": {
            "201": {
-             "description": "Account created successfully"
+             "description": "Created"
            },
            "500": {
-             "description": "Could not create account or server internal error"
+             "description": "Category already exists"
            }
          }
-      }
-    },
-    "/signin": {
-      "post": {
-        "tags": ["User"],
-        "sumary": "User login",
-         "description": "Login as user",
-         "requestBody": {
-           "content": {
-             "application/json": {
-               "schema": {
-                 "type": "object",
-                 "properties": {
-                   "name": {
-                     "type": "string"
-                   },
-                   "description": {
-                     "type": "string"
-                   }
-                 },
-                 "example": {
-                   "email": "E-mail used to create the account",
-                   "password": "Password used to create the account"
-                 }
-               }
-             }
-           }
-         },
-         "responses": {
-           "200": {
-             "description": "Back a json as response containing the user data and an auth"
-           },
-           "500": {
-             "description": "Server internal error"
-           }
-         }
-      }
-    },
-    "/user": {
-      "put": {
-        "tags": ["User"],
-        "sumary": "Edit user data",
-         "description": "Edit user data",
-         "requestBody": {
-           "content": {
-             "application/json": {
-               "schema": {
-                 "type": "object",
-                 "properties": {
-                   "name": {
-                     "type": "string"
-                   },
-                   "description": {
-                     "type": "string"
-                   }
-                 },
-                 "example": {
-                   "name": "New name",
-                   "email": "New email",
-                   "cpf": "Add a cpf",
-                   "telephone": "Add a phone number",
-                   "password": "New password"
-                   
-                 }
-               }
-             }
-           }
-         },
-         "responses": {
-           "200": {
-             "description": "Back a json as response containing the user data and an auth"
-           },
-           "500": {
-             "description": "Server internal error"
-           }
-         }
-      }
-    }
+       }
+     }
+   }
   }
-
-}
