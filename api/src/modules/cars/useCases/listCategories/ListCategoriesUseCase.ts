@@ -1,8 +1,8 @@
 import { Category } from '../../model/Category';
-import { IcategoriesRepository } from '../../repositories/ICategoriesRepository';
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 class ListCategoriesUseCase {
-  constructor(private categoriesRepository: IcategoriesRepository) {}
+  constructor(private categoriesRepository: ICategoriesRepository                                                                                                                                                                         ategoriesRepository) {}
 
   execute(): Category[]{
     const categories = this.categoriesRepository.list();
